@@ -9,7 +9,7 @@ The user facing services are;
 * Portainer
 * NextCloud + Nginx
 * Grafana
-* [UniFi Controller] (https://github.com/Fraddles/Home-Automation/tree/main/UniFi%20Controller)
+* [UniFi Controller](https://github.com/Fraddles/Home-Automation/tree/main/UniFi%20Controller)
 * MiniDLNA
 
 And a number of backend services;
@@ -27,6 +27,6 @@ The original setup exposed services to the network using either regular Docker p
 
 I would have liked the option to use my network DHCP server to assign dynamic IPs to the containers.  Docker will not do this, but Podman will, however only in a later version than is currently available for the Pi4, so I needed a solution that would work for Docker.
 
-After much searching and reading the solution I settled on was using a Docker [macvlan] (https://github.com/Fraddles/Home-Automation/tree/main/macvlan) network and assigning each service that needed it a static IP.  This results in the container having a fixed IP that will follow it to whichever host it is run up on.  It also allows each service to have it's own DNS entry (router dependant) so you do not need to remember all those IPs!.  It is not truly dynamic, but it does allow for moving services from one host to another easily.
+After much searching and reading the solution I settled on was using a Docker [macvlan](https://github.com/Fraddles/Home-Automation/tree/main/macvlan) network and assigning each service that needed it a static IP.  This results in the container having a fixed IP that will follow it to whichever host it is run up on.  It also allows each service to have it's own DNS entry (router dependant) so you do not need to remember all those IPs!.  It is not truly dynamic, but it does allow for moving services from one host to another easily.
 
 Currently I am in the process of migrating everything off the two Pi4s onto an old laptop so that the Pi4s can be rebuilt and reconfigued with minimal downtime.  I will try to document here the process of setting up, upgrading and migrating all of these parts...
