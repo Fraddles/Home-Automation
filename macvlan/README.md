@@ -71,6 +71,6 @@ networks:
 ```
 
 #### Some links for reference;
-https://docker-docs.netlify.app/network/network-tutorial-macvlan/
-https://blog.oddbit.com/post/2018-03-12-using-docker-macvlan-networks/
-https://blog.ivansmirnov.name/set-up-pihole-using-docker-macvlan-network/
+* https://docker-docs.netlify.app/network/network-tutorial-macvlan/
+* https://blog.oddbit.com/post/2018-03-12-using-docker-macvlan-networks/
+* https://blog.ivansmirnov.name/set-up-pihole-using-docker-macvlan-network/
