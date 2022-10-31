@@ -53,7 +53,7 @@ And hey presto, your host can now communicate with containers on the macvlan net
 
 Notes;
 * I initially got creative and assigned the same macvlan IP to all of my hosts thinking traffic on this interface would never leave the host.  BZZT WRONG.  Amongst other things traffic destined for containers in other hosts macvlan networks uses this interface.  Oddly enough, with them all using the same IP everything still worked, but there were some odd delays…
-* Depending on the DHCP service your host (applicable to Raspberry flavoured Debian 11, not stock Debian 11) uses you may need/want to disable DHCP for your macvlan bridge interface.  On a Pi add `denyinterfaces dockmac-shim` to `/etc/dhcpcd.conf` and reboot or restart the DHCP service.
+* Depending on the DHCP service your host uses (applicable to Raspberry flavoured Debian 11, but not stock Debian 11) you may need/want to disable DHCP for your macvlan bridge interface.  On a Pi add `denyinterfaces dockmac-shim` to `/etc/dhcpcd.conf` and reboot or restart the DHCP service.
 * The docker network is persistent across reboots, however the host bridge setup is NOT.  To make this configuration persistent I created a simple systemd service to run a script to start the bridge at boot.  If you have made it this far down the Docker rabbit hole you can probably manage a simple system service, but the attached files are what I use.  I probably should update it so it handles start-up AND shutdown :P
 
 Once everything is in place you can use the macvlan network for your containers with the following additions to your docker-compose.yaml
@@ -69,6 +69,9 @@ networks:
   dockermacvlan:
     external: true
 ```
+And just like that your container has its own fixed IP address on your network's native subnet.
+
+Optionally you can now setup a DNS entry for this IP in whatever DNS service your local network uses.
 
 #### Some links for reference;
 * https://docker-docs.netlify.app/network/network-tutorial-macvlan/
