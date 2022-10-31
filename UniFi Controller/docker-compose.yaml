@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  unifi:
+    container_name: UniFi
+    hostname: UniFi
+    image: jacobalberty/unifi:v7.2
+    user: 1001:1001
+    volumes:
+      - ./data:/unifi
+      - ./run:/var/run/unifi
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      dockermacvlan:
+        ipv4_address: 192.168.0.###
+    restart: always
+    environment:
+      - UNIFI_UID=1001
+      - UNIFI_GID=1001
+
+networks:
+  dockermacvlan:
+    external: true
