@@ -1,0 +1,13 @@
+# systemd unit file for Docker macvlan bridge
+# Put this file in /etc/systemd/system/dockmac-shim.service 
+[Unit]
+Description=Setup dockmac-shim macvlan bridge
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dockmac-shim.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
