@@ -13,7 +13,7 @@ The user facing services are;
 * MiniDLNA
 
 And a number of backend services;
-* Mosquitto 
+* [Mosquitto](https://github.com/Fraddles/Home-Automation/tree/main/Mosquitto)
 * PostgreSQL + Adminer
 * InfluxDB + Chronograf
 * Telegraf
