@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  mosquitto:
+    container_name: Mosquitto
+    image: eclipse-mosquitto
+    networks:
+      dockermacvlan:
+        ipv4_address: 192.168.0.###
+    user: 1001:1001
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+	  - ./data:/mosquitto/data
+	  - ./log:/mosquitto/log
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+
+networks:
+  dockermacvlan:
+    external: true
