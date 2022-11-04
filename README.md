@@ -5,7 +5,7 @@ The core of the system is Home-Assistant being fed data from a number of ESPHome
 
 The user facing services are;
 * Home Assistant
-* ESPHome
+* [ESPHome](https://github.com/Fraddles/Home-Automation/tree/main/ESPHome)
 * Portainer
 * NextCloud + Nginx
 * Grafana
