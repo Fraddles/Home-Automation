@@ -7,7 +7,7 @@ services:
     user: 1001:1001
     networks:
       dockermacvlan:
-        ipv4_address: 192.168.42.29
+        ipv4_address: 192.168.0.###
     volumes:
       - ./config:/config:rw
       - ./cache:/cache:rw
