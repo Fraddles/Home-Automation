@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  esphome:
+    container_name: ESPHome
+    image: esphome/esphome
+    user: 1001:1001
+    networks:
+      dockermacvlan:
+        ipv4_address: 192.168.42.29
+    volumes:
+      - ./config:/config:rw
+      - ./cache:/cache:rw
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PLATFORMIO_CORE_DIR=/cache/platformio
+      - PLATFORMIO_GLOBALLIB_DIR=/cache/platformio/lib
+      - PLATFORMIO_SETTING_ENABLE_TELEMETRY=No
+      - PLATFORMIO_SETTING_CHECK_PLATFORMIO_INTERVAL=999
+      - PLATFORMIO_SETTING_CHECK_PLATFORMS_INTERVAL=999
+      - PLATFORMIO_SETTING_CHECK_LIBRARIES_INTERVAL=999
+#      - ESPHOME_DASHBOARD_USE_PING=true
+    command: dashboard /config --password 'NAME_IS_BILLY_NOT_SILLY'
+    restart: unless-stopped
+
+networks:
+  dockermacvlan:
+    external: true
+    
