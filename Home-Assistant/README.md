@@ -15,7 +15,7 @@ The HA container is exposed to the network using a [macvlan](https://github.com/
 
 The Lets Encrypt certificate is generated using certbot in a separate process and then mapped into the HA container.  The certbot process will be covered in a separate topic.  Due to the way that cetbot handles 'live' and 'archived' certificates using symlinks it is neccessary to map two folders into the container for the certificates to be accessible to Home-Assistant (see here for a concise exlanation; https://superuser.com/questions/1357862/how-to-mount-certificates-from-certbot-to-use-inside-docker-container).
 
-The following needs to be added to the HA `configuration.yaml` to use the certificates for HTTPS;
+The following needs to be added to the HA `configuration.yaml` to use the mapped certificates for HTTPS;
 ```
 http:
   ssl_certificate: /ssl/live/<certificate_name>/fullchain.pem
