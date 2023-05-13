@@ -9,7 +9,7 @@ The HASS compose stack consists of three containers;
 
 Home-Assistant configuration and files lives in a subfolder called 'config', Whisper and Piper likewise have their files in subfolders named 'whisper' and 'piper' respectively.
 
-All containers run as an unprivileged user.
+All containers run as an unprivileged user that needs to exist on the host before hand, and folder permissions need to allow full access to the subfolders for this user.
 
 The HA container is exposed to the network using a [macvlan](https://github.com/Fraddles/Home-Automation/tree/main/macvlan) connection so that it has a real IP on the main LAN.  The Whisper and Piper containers are not exposed to the LAN and communicate with HA using an internal docker network.  One point of note with this is that HA did not seem to pick up the Whisper and Piper containers automatically, but they were easily added manually using the container name as the address and the appropriate port (10200 for Piper and 10300 for Whisper).
 
