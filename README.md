@@ -4,7 +4,7 @@ Rambling bits and pieces about my Home-Assistant and ESPHome setup.
 The core of the system is Home-Assistant being fed data from a number of ESPHome devices scattered around the house, plus a couple of other applications for particular services, all running in Docker containers.
 
 The user facing services are;
-* Home Assistant
+* [Home Assistant](https://github.com/Fraddles/Home-Automation/tree/main/Home-Assistant)
 * [ESPHome](https://github.com/Fraddles/Home-Automation/tree/main/ESPHome)
 * Portainer
 * NextCloud + Nginx
@@ -13,6 +13,7 @@ The user facing services are;
 * MiniDLNA
 
 And a number of backend services;
+* Lets Encrypt
 * [Mosquitto](https://github.com/Fraddles/Home-Automation/tree/main/Mosquitto)
 * PostgreSQL + Adminer
 * InfluxDB + Chronograf
