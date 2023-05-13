@@ -41,5 +41,9 @@ sudo docker run -it --rm --name certbot -v "<FOLDER>:/etc/letsencrypt" -v "<FOLD
 ```
 A `cron` job set to run this command every <interval> should ensure that the certificates are kept up to date.
 
-
-
+When running containers that use these certificates as a non-root user, there is a couple of permissions updates that are required to alow the files to be accessed;
+```
+sudo chmod 0755 <FOLDER>/{live,archive}
+sudo chgrp <USER_GROUP> <FOLDER>/live/<YOUR_DOMAIN>/privkey.pem
+sudo chmod 0640 <FOLDER>/live/<YOUR_DOMAIN>/privkey.pem
+```
