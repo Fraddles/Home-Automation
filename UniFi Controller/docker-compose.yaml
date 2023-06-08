@@ -4,7 +4,7 @@ services:
   unifi:
     container_name: UniFi
     hostname: UniFi
-    image: jacobalberty/unifi:v7.2
+    image: jacobalberty/unifi
     user: 1001:1001
     volumes:
       - ./data:/unifi
