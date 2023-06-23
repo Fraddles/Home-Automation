@@ -16,8 +16,8 @@ services:
       hass:
     volumes:
       - ./config:/config
-      - /docker/certbot/certs/live/fraddles.com/fullchain.pem:/ssl/fullchain.pem:ro
-      - /docker/certbot/certs/live/fraddles.com/privkey.pem:/ssl/privkey.pem:ro
+      - /docker/certbot/certs/live/<DOMAIN>/fullchain.pem:/ssl/fullchain.pem:ro
+      - /docker/certbot/certs/live/<DOMAIN>/privkey.pem:/ssl/privkey.pem:ro
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
