@@ -8,7 +8,7 @@ networks:
 services:
   homeassistant:
     container_name: Home-Assistant
-    image: homeassistant/home-assistant:stable
+    image: ghcr.io/home-assistant/home-assistant:stable
     user: 1001:1001
     networks:
       dockermacvlan:
