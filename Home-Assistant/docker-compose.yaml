@@ -9,7 +9,7 @@ services:
   homeassistant:
     container_name: Home-Assistant
     image: ghcr.io/home-assistant/home-assistant:stable
-    user: 1001:1001
+#    user: 1001:1001
     networks:
       dockermacvlan:
         ipv4_address: 192.168.0.###
@@ -34,8 +34,10 @@ services:
       - ./whisper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: --model small --language en
-    restart: always
+    environment:
+      - TZ=Australia/Melbourne
+    command: --model small-int8 --language en
+    restart: unless-stopped
 ##
   piper:
     container_name: Piper
@@ -47,6 +49,23 @@ services:
       - ./piper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Australia/Melbourne
     command: --voice en-us-ryan-medium
-    restart: always
+    restart: unless-stopped
 ##
+  openwakeword:
+    container_name: openwakeword
+    image: rhasspy/wyoming-openwakeword
+    user: 1001:1001
+    networks:
+      - hass
+    volumes:
+      - ./wakeword:/data
+      - ./wakeword:/custom
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Australia/Melbourne
+    command: --preload-model 'ok_nabu' --custom-model-dir /custom
+    restart: unless-stopped
