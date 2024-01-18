@@ -1,0 +1,23 @@
+services:
+  whisper:
+    container_name: whisper
+    image: rhasspy/wyoming-whisper:latest
+    command: --model small --language en --beam-size 5 --device cuda
+    volumes:
+      - /home/whisper/whisper-data:/data
+      - /usr/lib/x86_64-linux-gnu/libcudnn_ops_infer.so.8:/usr/lib/x86_64-linux-gnu/libcudnn_ops_infer.so.8:ro
+      - /usr/lib/x86_64-linux-gnu/libcudnn_cnn_infer.so.8:/usr/lib/x86_64-linux-gnu/libcudnn_cnn_infer.so.8:ro
+      - /usr/lib/x86_64-linux-gnu/libcublasLt.so.12:/usr/lib/x86_64-linux-gnu/libcublasLt.so.12:ro
+      - /usr/lib/x86_64-linux-gnu/libcublas.so.12:/usr/lib/x86_64-linux-gnu/libcublas.so.11:ro
+      - /usr/lib/x86_64-linux-gnu/libcublas.so.12:/usr/lib/x86_64-linux-gnu/libcublas.so.12:ro
+    restart: always
+    ports:
+      - 10300:10300
+    runtime: nvidia
+    deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
