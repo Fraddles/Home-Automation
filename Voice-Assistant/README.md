@@ -59,3 +59,8 @@ Currently my Home Assistant and GPU enabled Whisper are running on different ser
 - You can validate the improvment in performance by removing the `--device cuda` from the command and relaunching the container, this will cause it to use CPU rather than GPU.
 - It was neccessary to map some additional libraries into the container to resolve some errors.  Without these libraries the container would start, but crash out as soon as any STT was required.  These libraries are part of the `nvidia-cudnn` package.
 
+| CPU | GPU |
+|-----|-----|
+|   | ![image](https://github.com/Fraddles/Home-Automation/assets/65753186/44aac459-8d4c-4f93-a5b9-dfd4dfb32025) |
+
+
