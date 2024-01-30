@@ -9,8 +9,7 @@ This was setup on a fresh install of Debian 12 Testing (Trixie) on an old Dell m
 *After initial install do some updates and cleanup;*
 - Add 'contrib' and 'non-free' to the repos, comment out the 'DVD' repo if it is there
 - Update the repo cache `sudo apt update`
-- Install some extras (may not be required for all) `sudo apt install linux-headers-amd64 firmware-misc-nonfree firmware-realtek`
-- Upgrade any other packages `sudo apt upgrade`
+- Upgrade any packages that need it `sudo apt upgrade`
 ### Add docker...  https://docs.docker.com/engine/install/debian/#install-using-the-repository
 *Add Docker's official GPG key:*
 ```
